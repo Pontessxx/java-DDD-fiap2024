@@ -1,0 +1,69 @@
+package br.com.fiap;
+
+import java.util.Scanner;
+
+public class UsaTelevisor {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+        Televisor televisor = new Televisor(); // Assuming default constructor sets channel and volume to 0
+        int choice;
+
+        do {
+            System.out.println("\n=== Televisor Menu ===");
+            System.out.println("1. Aumentar Volume");
+            System.out.println("2. Diminuir Volume");
+            System.out.println("3. Aumentar Canal");
+            System.out.println("4. Diminuir Canal");
+            System.out.println("5. Definir Canal");
+            System.out.println("6. Definir Volume");
+            System.out.println("7. Estado Atual");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    televisor.aumentaVolume(choice);
+                    System.out.println("Volume aumentado.");
+                    break;
+                case 2:
+                    televisor.diminuiVolume(choice);
+                    System.out.println("Volume diminuído.");
+                    break;
+                case 3:
+                    televisor.aumentaCanal(choice);
+                    System.out.println("Canal aumentado.");
+                    break;
+                case 4:
+                    televisor.diminuiCanal(choice);
+                    System.out.println("Canal diminuído.");
+                    break;
+                case 5:
+                    System.out.print("Digite o número do canal: ");
+                    int canal = scanner.nextInt();
+                    televisor.setCanal(canal);
+                    System.out.println("Canal definido para " + canal + ".");
+                    break;
+                case 6:
+                    System.out.print("Defina o volume (0-10): ");
+                    int volume = scanner.nextInt();
+                    televisor.setVolume(volume);
+                    System.out.println("Volume definido para " + volume + ".");
+                    break;
+                case 7:
+                    System.out.println("Canal atual: " + televisor.getCanal());
+                    System.out.println("Volume atual: " + televisor.getVolume());
+                    break;
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
+            }
+        } while (choice != 0);
+	}
+
+}

@@ -1,0 +1,99 @@
+package br.com.fiap;
+
+import java.util.Scanner;
+
+public class Medico {
+	//Declaração de variaveis
+    private String nome;
+    private String crm;
+    private String especialidade;
+    private int idade;
+    public static final String ESPECIALIDADE_PADRAO = "Geral";	//variavel constante
+
+    public Medico(String nome, String crm, String especialidade, int idade) {
+        this.nome = nome;
+        this.crm = crm;
+        this.especialidade = especialidade.isEmpty() ? ESPECIALIDADE_PADRAO : especialidade;	// verificação para mudar a esp.
+        this.idade = idade;
+    }
+
+    // Getters e Setters
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
+    
+    public int getIdade() {
+    	return idade;
+    }
+    public void setIdade(int idade) {
+    	this.idade = idade;
+    }
+
+    // Métodos de funcionalidade do codigo medico
+    public void mostrarInformacoes() {
+        System.out.println("Nome do Médico: " + nome);
+        System.out.println("CRM: " + crm);
+        System.out.println("Especialidade: " + especialidade);
+        System.out.println("Idade : "+ idade);
+    }
+
+    public void alterarEspecialidade(String novaEspecialidade) {
+        this.especialidade = novaEspecialidade;
+        System.out.println("Especialidade alterada para: " + especialidade);
+    }
+
+    // Menu interno para manipulação da classe
+    public void menuMedico() {
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+	    	 System.out.println("\n=======================");
+	         System.out.println("          MEDICO         ");
+	         System.out.println("=========================");
+            System.out.println("1. Mostrar Informações");
+            System.out.println("2. Alterar Especialidade");
+            System.out.println("3. Sair");
+            System.out.print("\nEscolha uma opção: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    mostrarInformacoes();
+                    break;
+                case 2:
+                    System.out.print("Digite a nova especialidade: ");
+                    scanner.nextLine(); // Limpa o buffer do scanner
+                    String novaEspecialidade = scanner.nextLine();
+                    alterarEspecialidade(novaEspecialidade);
+                    break;
+                case 3:
+                    System.out.println("Saindo do menu do médico...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Por favor, tente novamente.");
+            }
+        } while (opcao != 3);	//para valores diferentes de 3 
+    }
+}
+

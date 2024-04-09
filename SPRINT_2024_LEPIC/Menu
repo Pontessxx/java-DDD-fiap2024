@@ -1,0 +1,57 @@
+package br.com.fiap;
+
+import java.util.Scanner;
+
+public class Menu {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		Medico medico = null; // Declaração inicial, sem instanciar
+		
+		  System.out.println("\n================================");
+          System.out.println("         MENU PRINCIPAL         ");
+          System.out.println("================================");
+          System.out.println("| 1. Criar Cadastro Paciente    |");
+          System.out.println("| 2. Cadastro Medico            |");
+          System.out.println("| 3. Remover Item               |");
+          System.out.println("| 4. Sair                       |");
+          System.out.println("================================");
+          System.out.print("\nEscolha uma opção: ");
+         
+          int opcao = scan.nextInt();
+
+          switch (opcao) {
+              case 1:
+            	  scan.nextLine(); // Limpar buffer do scanner
+                  System.out.print("\nDigite o nome do médico: ");
+                  String nome = scan.nextLine();
+                  System.out.print("Digite o CRM do médico: ");
+                  String crm = scan.nextLine();
+                  System.out.print("Digite a especialidade do médico: ");
+                  String especialidade = scan.nextLine();
+                  System.out.print("Digite a idade do médico: ");
+                  int idade = scan.nextInt();
+                  medico = new Medico(nome, crm, especialidade, idade); // Instanciando com as entradas do usuário
+                  System.out.println(".....................................\n");
+                  System.out.println("Cadastro de Médico criado com sucesso!\n");
+                  System.out.println(".....................................\n");
+                  medico.menuMedico();
+                  if (medico != null) {
+                      medico.menuMedico(); // Após sair do menu do médico, o loop continua
+                  }
+                  break;
+              case 2:
+                  
+                  break;
+              case 3:
+                 
+                  break;
+              case 4:
+                  System.out.println("Saindo...");
+                  return;
+              default:
+                  System.out.println("Opção inválida. Por favor, tente novamente.");
+          }
+	}
+
+}
